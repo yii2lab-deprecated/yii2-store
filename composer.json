@@ -13,5 +13,7 @@
              "yii2lab\\store\\": "src"
          }
     },
-    "require": {}
+    "require": {
+        "yii2mod/yii2-helpers": "*"
+    }
 }
