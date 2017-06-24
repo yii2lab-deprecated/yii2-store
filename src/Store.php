@@ -3,7 +3,7 @@
 namespace yii2lab\store;
 
 use Yii;
-use woop\foundation\yii\helpers\FileHelper;
+use yii2lab\helpers\yii\FileHelper;
 use yii2mod\helpers\ArrayHelper;
 use yii\base\Component;
 

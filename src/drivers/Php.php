@@ -4,7 +4,7 @@ namespace yii2lab\store\drivers;
 
 use yii2lab\store\interfaces\DriverInterface;
 use yii\helpers\VarDumper;
-use woop\foundation\yii\helpers\FileHelper;
+use yii2lab\helpers\yii\FileHelper;
 use yii2mod\helpers\ArrayHelper;
 
 class Php implements DriverInterface
