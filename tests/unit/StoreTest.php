@@ -32,7 +32,7 @@ class StoreTest extends Unit
 	public function testSave()
 	{
 		$store = new Store('Json');
-		$fileName = $this->fileName('example');
+		$fileName = $this->fileName('temp');
 		$store->save($fileName, $this->decoded);
 		$result = $store->load($fileName);
 		expect($result)->equals($this->decoded);
@@ -40,7 +40,7 @@ class StoreTest extends Unit
 	
 	public function testUpdate()
 	{
-		//$this->loadFixture();
+		$this->loadFixture();
 		$store = new Store('Json');
 		$fileName = $this->fileName('example');
 		$store->update($fileName, 'balance.active', 200);
@@ -50,24 +50,27 @@ class StoreTest extends Unit
 
 	public function testLoad()
 	{
+		$this->loadFixture();
 		$store = new Store('Json');
-		$fileName = $this->fileName('source');
+		$fileName = $this->fileName('example');
 		$result = $store->load($fileName);
 		expect($result)->equals($this->decoded);
 	}
 	
 	public function testLoadWithKey()
 	{
+		$this->loadFixture();
 		$store = new Store('Json');
-		$fileName = $this->fileName('source');
+		$fileName = $this->fileName('example');
 		$result = $store->load($fileName, 'name');
 		expect($result)->equals('John');
 	}
 	
 	public function testLoadWithMultiKey()
 	{
+		$this->loadFixture();
 		$store = new Store('Json');
-		$fileName = $this->fileName('source');
+		$fileName = $this->fileName('example');
 		$result = $store->load($fileName, 'balance.active');
 		expect($result)->equals(100);
 	}
