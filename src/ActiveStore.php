@@ -36,6 +36,9 @@ class ActiveStore extends Component
         return $filtered;
 	}
 	
+	/**
+	 * @return Store
+	 */
 	protected static function storeInstance()
 	{
 		if(empty(static::$storeInstance)) {
