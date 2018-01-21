@@ -19,6 +19,7 @@ class StoreTest extends Unit
 	{
 		$store = new Store('Json');
 		$result = $store->encode($this->decoded);
+		$result = preg_replace('#\s+#', '', $result);
 		expect($result)->equals($this->encoded);
 	}
 	
