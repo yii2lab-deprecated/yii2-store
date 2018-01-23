@@ -1,5 +1,5 @@
 <?php
-namespace yii2lab\store\tests\unit;
+namespace tests\unit;
 
 use Codeception\Test\Unit;
 use yii2lab\store\tests\models\Login;
