@@ -2,7 +2,6 @@
 
 namespace yii2lab\store;
 
-use yii2lab\store\Store;
 use yii2mod\helpers\ArrayHelper;
 use yii\base\Component;
 
