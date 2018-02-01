@@ -2,6 +2,8 @@
 
 namespace yii2lab\store\drivers;
 
+use yii2lab\helpers\generator\FileGeneratorHelper;
+use yii2lab\helpers\StringHelper;
 use yii2lab\store\interfaces\DriverInterface;
 use yii\helpers\VarDumper;
 use yii2lab\helpers\yii\FileHelper;
@@ -13,21 +15,25 @@ class Php implements DriverInterface
 	public function decode($content) {
 		$code = '$data = ' . $content . ';';
 		eval($code);
+		/** @var mixed $data */
 		return $data;
 	}
 
 	public function encode($data) {
 		$content = VarDumper::export($data);
-		$content = str_replace(str_repeat(SPC, 4), "\t", $content);
+		$content = StringHelper::setTab($content, 4);
 		return $content;
 	}
 
 	public function save($fileName, $data) {
 		$content = $this->encode($data);
-		$code = '<?php ' . PHP_EOL . PHP_EOL . 'return ' . $content . ';';
+		$code = PHP_EOL . PHP_EOL . 'return ' . $content . ';';
 		FileHelper::save($fileName, $code);
+		$data['fileName'] = $fileName;
+		$data['code'] = $code;
+		FileGeneratorHelper::generate($data);
 	}
-
+	
 	public function load($fileName, $key = null) {
 		if(!FileHelper::has($fileName)) {
 			return null;
