@@ -55,7 +55,7 @@ class Store extends Component
     }
 
     public function load($fileAlias, $key = null) {
-        $fileName = Yii::getAlias($fileAlias);
+        $fileName = FileHelper::getAlias($fileAlias);
 		if(!FileHelper::has($fileName)) {
 			return null;
 		}
@@ -73,7 +73,7 @@ class Store extends Component
     }
 
     public function save($fileAlias, $data) {
-        $fileName = Yii::getAlias($fileAlias);
+        $fileName = FileHelper::getAlias($fileAlias);
 		if(method_exists($this->driverInstance, 'save')) {
 			return $this->driverInstance->save($fileName, $data);
 		}
