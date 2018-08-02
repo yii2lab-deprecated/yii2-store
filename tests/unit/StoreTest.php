@@ -20,14 +20,14 @@ class StoreTest extends Unit
 		$store = new Store('Json');
 		$result = $store->encode($this->decoded);
 		$result = preg_replace('#\s+#', '', $result);
-		expect($result)->equals($this->encoded);
+		$this->tester->assertEquals($result, $this->encoded);
 	}
 	
 	public function testDecode()
 	{
 		$store = new Store('Json');
 		$result = $store->decode($this->encoded);
-		expect($result)->equals($this->decoded);
+		$this->tester->assertEquals($result, $this->decoded);
 	}
 	
 	public function testSave()
@@ -36,7 +36,7 @@ class StoreTest extends Unit
 		$fileName = $this->fileName('temp');
 		$store->save($fileName, $this->decoded);
 		$result = $store->load($fileName);
-		expect($result)->equals($this->decoded);
+		$this->tester->assertEquals($result, $this->decoded);
 	}
 	
 	public function testUpdate()
@@ -46,7 +46,7 @@ class StoreTest extends Unit
 		$fileName = $this->fileName('example');
 		$store->update($fileName, 'balance.active', 200);
 		$result = $store->load($fileName, 'balance.active');
-		expect($result)->equals(200);
+		$this->tester->assertEquals($result, 200);
 	}
 
 	public function testLoad()
@@ -55,7 +55,7 @@ class StoreTest extends Unit
 		$store = new Store('Json');
 		$fileName = $this->fileName('example');
 		$result = $store->load($fileName);
-		expect($result)->equals($this->decoded);
+		$this->tester->assertEquals($result, $this->decoded);
 	}
 	
 	public function testLoadWithKey()
@@ -64,7 +64,7 @@ class StoreTest extends Unit
 		$store = new Store('Json');
 		$fileName = $this->fileName('example');
 		$result = $store->load($fileName, 'name');
-		expect($result)->equals('John');
+		$this->tester->assertEquals($result, 'John');
 	}
 	
 	public function testLoadWithMultiKey()
@@ -73,7 +73,7 @@ class StoreTest extends Unit
 		$store = new Store('Json');
 		$fileName = $this->fileName('example');
 		$result = $store->load($fileName, 'balance.active');
-		expect($result)->equals(100);
+		$this->tester->assertEquals($result, 100);
 	}
 	
 	private function fileName($name)

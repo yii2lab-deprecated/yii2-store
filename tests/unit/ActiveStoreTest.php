@@ -10,7 +10,7 @@ class ActiveStoreTest extends Unit
 	public function testOne()
 	{
 		$result = Login::one(['login' => '77004163092']);
-		expect($result)->equals([
+		$this->tester->assertEquals($result, [
 			'login' => '77004163092',
 			'role' => 'rAdministrator',
 			'is_active' => 1,
@@ -20,7 +20,7 @@ class ActiveStoreTest extends Unit
 	public function testAll()
 	{
 		$result = Login::all(['is_active' => 1]);
-		expect($result)->equals([
+		$this->tester->assertEquals($result, [
 			[
 				'login' => '77004163092',
 				'role' => 'rAdministrator',
