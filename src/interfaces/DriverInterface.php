@@ -2,6 +2,11 @@
 
 namespace yii2lab\store\interfaces;
 
+/**
+ * Interface DriverInterface
+ * @package yii2lab\store\interfaces
+ * @deprecated
+ */
 interface DriverInterface
 {
 
